@@ -37,37 +37,49 @@ $if(duration)$
 $endif$
 </head>
 <body>
-$for(include-before)$
-$include-before$
-$endfor$
-$if(title)$
-<div class="slide titlepage">
-  <h1 class="title">$title$</h1>
-$if(subtitle)$
-  <h1 class="subtitle">$subtitle$</h1>
-$endif$
-  <p class="author">
-$for(author)$$author$$sep$<br/>$endfor$
-  </p>
-$if(date)$
-  <p class="date">$date$</p>
-$endif$
-</div>
-$endif$
-$body$
-$for(include-after)$
-$include-after$
-$endfor$
-$if(mathjax-url)$
-  <!-- dynamically load mathjax for compatibility with self-contained -->
-  <script>
-    (function () {
-      var script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src  = "$mathjax-url$";
-      document.getElementsByTagName("head")[0].appendChild(script);
-    })();
-  </script>
-$endif$
+  <article id="webslides">
+    <section>
+      $for(include-before)$
+        $include-before$
+      $endfor$
+      $if(title)$
+        <div class="slide titlepage">
+          <h1 class="title">$title$</h1>
+          $if(subtitle)$
+            <h1 class="subtitle">$subtitle$</h1>
+          $endif$
+          <p class="author">
+            $for(author)$$author$$sep$<br/>$endfor$
+          </p>
+          $if(date)$
+            <p class="date">$date$</p>
+          $endif$
+        </div>
+      $endif$
+    </section>
+
+  $body$
+  $for(include-after)$
+  $include-after$
+  $endfor$
+  $if(mathjax-url)$
+    <!-- dynamically load mathjax for compatibility with self-contained -->
+    <script>
+      (function () {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src  = "$mathjax-url$";
+        document.getElementsByTagName("head")[0].appendChild(script);
+      })();
+    </script>
+  $endif$
+
+</article>
+
+   <!-- Required -->
+    <script>
+      window.ws = new WebSlides();
+    </script> <!-- Autoslide? window.ws = new WebSlides({ autoslide: 8000 }); -->
+
 </body>
 </html>
