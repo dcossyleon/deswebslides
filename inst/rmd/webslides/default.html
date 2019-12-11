@@ -6,48 +6,47 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
-$for(author-meta)$
-  <meta name="author" content="$author-meta$" />
-$endfor$
-$if(date-meta)$
-  <meta name="date" content="$date-meta$" />
-$endif$
-$if(footer)$
-  <meta name="copyright" content="$footer$"/>
-$endif$
-$if(font-size-adjustment)$
-  <meta name="font-size-adjustment" content="$font-size-adjustment$"/>
-$endif$
+  $for(author-meta)$
+    <meta name="author" content="$author-meta$" />
+  $endfor$
+  $if(date-meta)$
+    <meta name="date" content="$date-meta$" />
+  $endif$
+  $if(footer)$
+    <meta name="copyright" content="$footer$"/>
+  $endif$
+  $if(font-size-adjustment)$
+    <meta name="font-size-adjustment" content="$font-size-adjustment$"/>
+  $endif$
   <title>$if(title-prefix)$$title-prefix$ - $endif$$pagetitle$</title>
   <style type="text/css">code{white-space: pre;}</style>
-$if(highlighting-css)$
-  <style type="text/css">
-$highlighting-css$
-  </style>
-$endif$
-$for(header-includes)$
-  $header-includes$
-$endfor$
-$for(css)$
-  <link rel="stylesheet" type="text/css" media="screen, projection, print"
-   href="$css$" />
-$endfor$
-$if(duration)$
-  <meta name="duration" content="$duration$" />
-$endif$
+  $if(highlighting-css)$
+    <style type="text/css">
+      $highlighting-css$
+    </style>
+  $endif$
+  $for(header-includes)$
+    $header-includes$
+  $endfor$
+  $for(css)$
+    <link rel="stylesheet" type="text/css" media="screen, projection, print" href="$css$" />
+  $endfor$
+  $if(duration)$
+    <meta name="duration" content="$duration$" />
+  $endif$
 </head>
 <body>
   <article id="webslides">
-    <section>
-      $for(include-before)$
-        $include-before$
-      $endfor$
-      $if(title)$
+    $for(include-before)$
+      $include-before$
+    $endfor$
+    $if(title)$
+      <section>
         <div class="slide titlepage">
           <h1 class="title">$title$</h1>
-          $if(subtitle)$
+            $if(subtitle)$
             <h1 class="subtitle">$subtitle$</h1>
-          $endif$
+            $endif$
           <p class="author">
             $for(author)$$author$$sep$<br/>$endfor$
           </p>
@@ -55,28 +54,29 @@ $endif$
             <p class="date">$date$</p>
           $endif$
         </div>
-      $endif$
-    </section>
+      </section>
+    $endif$
 
-  $body$
-  $for(include-after)$
-  $include-after$
-  $endfor$
-  $if(mathjax-url)$
-    <!-- dynamically load mathjax for compatibility with self-contained -->
-    <script>
-      (function () {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src  = "$mathjax-url$";
-        document.getElementsByTagName("head")[0].appendChild(script);
-      })();
-    </script>
-  $endif$
+    $body$
+
+    $for(include-after)$
+      $include-after$
+    $endfor$
+    $if(mathjax-url)$
+      <!-- dynamically load mathjax for compatibility with self-contained -->
+      <script>
+        (function () {
+          var script = document.createElement("script");
+          script.type = "text/javascript";
+          script.src  = "$mathjax-url$";
+          document.getElementsByTagName("head")[0].appendChild(script);
+        })();
+      </script>
+    $endif$
 
 </article>
 
-   <!-- Required -->
+   <!-- Required to activate webslides-->
     <script>
       window.ws = new WebSlides();
     </script> <!-- Autoslide? window.ws = new WebSlides({ autoslide: 8000 }); -->
